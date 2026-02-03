@@ -1,0 +1,36 @@
+# BEGIN LSCACHE
+## LITESPEED_CACHE_START - Do not edit the contents of this block! ##
+<IfModule LiteSpeed>
+RewriteEngine on
+CacheLookup on
+RewriteRule .* - [E=Cache-Control:no-autoflush]
+
+# 1 year for static assets (fonts, images)
+RewriteRule (.*)\.(woff2?|eot|ttf|otf|ico|webp|avif)$ - [E=cache-control:max-age=31536000,public]
+
+# 1 week for CSS/JS files
+RewriteRule (.*)\.(css|js)$ - [E=cache-control:max-age=604800,public]
+
+# 1 day for HTML pages
+RewriteRule (.*)\.(html?)$ - [E=cache-control:max-age=86400,public]
+
+</IfModule>
+## LITESPEED_CACHE_END ##
+# END LSCACHE
+# BEGIN NON_LSCACHE
+# END NON_LSCACHE
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress

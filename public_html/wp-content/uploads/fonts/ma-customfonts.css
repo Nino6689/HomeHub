@@ -1,0 +1,31 @@
+/* Version: Code Snippet "MA Custom Fonts" 3.4.2 - Optimized */
+/* Performance: Using font-display: swap for better loading performance */
+
+@font-face {
+  font-family: "Aquatico";
+  font-weight: 400;
+  font-style: normal;
+  src: url("//hhssuk.co.uk/wp-content/uploads/fonts/Aquatico-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CaviarDreams";
+  font-weight: 400;
+  font-style: normal;
+  src: url("//hhssuk.co.uk/wp-content/uploads/fonts/CaviarDreams.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CaviarDreams_";
+  font-weight: 700;
+  font-style: normal;
+  src: url("//hhssuk.co.uk/wp-content/uploads/fonts/CaviarDreams_Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+/* Font Family Utility Classes */
+.has-aquatico-font-family { font-family: "Aquatico", sans-serif; }
+.has-caviardreams-font-family { font-family: "CaviarDreams", sans-serif; }
+.has-caviardreams_-font-family { font-family: "CaviarDreams_", "CaviarDreams", sans-serif; }
