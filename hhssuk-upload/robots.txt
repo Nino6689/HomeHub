@@ -1,0 +1,11 @@
+# robots.txt for HomeHub Smart Solutions
+# https://hhssuk.co.uk
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://hhssuk.co.uk/sitemap.xml
+
+# Crawl-delay for politeness
+Crawl-delay: 1
