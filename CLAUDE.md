@@ -84,11 +84,14 @@ All pages implement GDPR-compliant consent mode:
 - Located in `<head>` of every HTML file
 
 ### Structured Data (JSON-LD)
-- **LocalBusiness** schema on homepage
+- **LocalBusiness** schema on homepage and reviews page
+- **Organization** schema on homepage (for knowledge panel)
 - **Service** schema on service pages
 - **FAQPage** schema on service pages
 - **Article** schema on blog posts
 - **BreadcrumbList** schema on all pages
+- **VideoObject** schema on homepage (YouTube embed)
+- **AggregateRating + Review** schema on reviews.html (star ratings in SERPs)
 
 ### Local SEO
 15 location landing pages targeting key service/area combinations:
