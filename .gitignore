@@ -4,6 +4,9 @@ public_html/
 # Old assets folder
 assets/
 
+# Upload folders
+hhssuk-upload/
+
 # Zip files
 *.zip
 
