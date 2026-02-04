@@ -111,6 +111,12 @@ Each page includes:
 - Area coverage lists
 - Pricing tables
 
+### Technical SEO (Core Web Vitals)
+- **Image optimization:** All images have `width`, `height`, `loading="lazy"`, and `decoding="async"` attributes to prevent CLS
+- **Resource hints:** DNS prefetch for googletagmanager.com, youtube.com; preconnect for Google Fonts
+- **Compression:** Gzip enabled via .htaccess
+- **Caching:** Browser caching headers for static assets
+
 ### Sitemap
 - 55+ URLs total
 - Submitted to Google Search Console and Bing Webmaster Tools
