@@ -34,9 +34,20 @@ HomeHub/
 ├── privacy.html            # Privacy policy
 ├── terms.html              # Terms of service
 ├── cookies.html            # Cookie policy
-├── cctv-installation-crawley.html    # Local SEO page
-├── cctv-installation-brighton.html   # Local SEO page
-├── smart-home-installation-horsham.html  # Local SEO page
+├── # Location Pages (13 total - Local SEO)
+├── cctv-installation-horsham.html
+├── cctv-installation-crawley.html
+├── cctv-installation-brighton.html
+├── cctv-installation-worthing.html
+├── smart-home-installation-horsham.html
+├── smart-home-installation-crawley.html
+├── smart-home-installation-brighton.html
+├── home-cinema-installation-horsham.html
+├── home-cinema-installation-sussex.html
+├── wifi-installation-horsham.html
+├── wifi-installation-crawley.html
+├── wifi-installation-brighton.html
+├── guardian-elderly-care-sussex.html
 ├── blog/                   # Blog articles (23 posts)
 │   ├── index.html          # Blog listing
 │   └── *.html              # Individual articles
@@ -47,7 +58,7 @@ HomeHub/
 │   └── cookies.js          # Cookie consent + GA4 consent mode
 ├── images/                 # Site images
 ├── fonts/                  # Custom fonts
-├── sitemap.xml             # XML sitemap (38 URLs)
+├── sitemap.xml             # XML sitemap (50+ URLs)
 ├── robots.txt              # Search engine directives
 └── .gitignore
 ```
@@ -75,13 +86,26 @@ All pages implement GDPR-compliant consent mode:
 - **BreadcrumbList** schema on all pages
 
 ### Local SEO
-- Location landing pages for key towns (Crawley, Brighton, Horsham)
+13 location landing pages targeting key service/area combinations:
+
+| Service | Horsham | Crawley | Brighton | Worthing | Sussex |
+|---------|---------|---------|----------|----------|--------|
+| CCTV | ✓ | ✓ | ✓ | ✓ | - |
+| Smart Home | ✓ | ✓ | ✓ | - | - |
+| Home Cinema | ✓ | - | - | - | ✓ |
+| WiFi | ✓ | ✓ | ✓ | - | - |
+| Guardian | - | - | - | - | ✓ |
+
+Each page includes:
+- LocalBusiness + Service schema
+- FAQPage schema (4 location-specific Q&As)
+- BreadcrumbList schema
 - Geo meta tags (`geo.region`, `geo.placename`)
-- Service area definitions in schema
-- NAP consistency (Name, Address, Phone)
+- Area coverage lists
+- Pricing tables
 
 ### Sitemap
-- 38 URLs total
+- 50+ URLs total
 - Submitted to Google Search Console and Bing Webmaster Tools
 - Auto-discovered via robots.txt
 
