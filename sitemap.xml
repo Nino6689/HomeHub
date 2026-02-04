@@ -103,6 +103,18 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://hhssuk.co.uk/guardian-elderly-care-sussex.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://hhssuk.co.uk/cctv-installation-worthing.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- Blog -->
     <url>
         <loc>https://hhssuk.co.uk/blog/</loc>
