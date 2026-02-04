@@ -91,6 +91,18 @@
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://hhssuk.co.uk/home-cinema-installation-sussex.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://hhssuk.co.uk/wifi-installation-horsham.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- Blog -->
     <url>
         <loc>https://hhssuk.co.uk/blog/</loc>
