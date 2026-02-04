@@ -34,14 +34,17 @@ HomeHub/
 ├── privacy.html            # Privacy policy
 ├── terms.html              # Terms of service
 ├── cookies.html            # Cookie policy
-├── # Location Pages (13 total - Local SEO)
+├── service-areas.html      # Coverage map & all locations
+├── # Location Pages (15 total - Local SEO)
 ├── cctv-installation-horsham.html
 ├── cctv-installation-crawley.html
 ├── cctv-installation-brighton.html
 ├── cctv-installation-worthing.html
+├── cctv-installation-eastbourne.html
 ├── smart-home-installation-horsham.html
 ├── smart-home-installation-crawley.html
 ├── smart-home-installation-brighton.html
+├── smart-home-installation-chichester.html
 ├── home-cinema-installation-horsham.html
 ├── home-cinema-installation-sussex.html
 ├── wifi-installation-horsham.html
@@ -88,15 +91,17 @@ All pages implement GDPR-compliant consent mode:
 - **BreadcrumbList** schema on all pages
 
 ### Local SEO
-13 location landing pages targeting key service/area combinations:
+15 location landing pages targeting key service/area combinations:
 
-| Service | Horsham | Crawley | Brighton | Worthing | Sussex |
-|---------|---------|---------|----------|----------|--------|
-| CCTV | ✓ | ✓ | ✓ | ✓ | - |
-| Smart Home | ✓ | ✓ | ✓ | - | - |
-| Home Cinema | ✓ | - | - | - | ✓ |
-| WiFi | ✓ | ✓ | ✓ | - | - |
-| Guardian | - | - | - | - | ✓ |
+| Service | Horsham | Crawley | Brighton | Worthing | Eastbourne | Chichester | Sussex |
+|---------|---------|---------|----------|----------|------------|------------|--------|
+| CCTV | ✓ | ✓ | ✓ | ✓ | ✓ | - | - |
+| Smart Home | ✓ | ✓ | ✓ | - | - | ✓ | - |
+| Home Cinema | ✓ | - | - | - | - | - | ✓ |
+| WiFi | ✓ | ✓ | ✓ | - | - | - | - |
+| Guardian | - | - | - | - | - | - | ✓ |
+
+**Service Areas Page:** `/service-areas.html` - Coverage map with links to all location pages
 
 Each page includes:
 - LocalBusiness + Service schema
@@ -107,7 +112,7 @@ Each page includes:
 - Pricing tables
 
 ### Sitemap
-- 50+ URLs total
+- 55+ URLs total
 - Submitted to Google Search Console and Bing Webmaster Tools
 - Auto-discovered via robots.txt
 
