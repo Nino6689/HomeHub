@@ -58,6 +58,8 @@ HomeHub/
 │   └── cookies.js          # Cookie consent + GA4 consent mode
 ├── images/                 # Site images
 ├── fonts/                  # Custom fonts
+├── 404.html                # Custom 404 error page
+├── .htaccess               # Apache/LiteSpeed config
 ├── sitemap.xml             # XML sitemap (50+ URLs)
 ├── robots.txt              # Search engine directives
 └── .gitignore
@@ -122,6 +124,21 @@ CSS custom properties (variables) define the design system:
 - `--primary`: #7C3AED (purple)
 - `--gray-*`: Gray scale
 - Responsive breakpoints at 768px, 1024px
+
+### .htaccess
+Apache/LiteSpeed server configuration:
+- **Custom 404** → Redirects to `/404.html`
+- **Gzip compression** for text, HTML, CSS, JS, JSON
+- **Browser caching** (1 year for images, 1 month for CSS/JS)
+- **Security headers** (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection)
+- **Directory listing** disabled
+
+### 404.html
+Custom error page with:
+- HomeHub branding and navigation
+- "Oops!" message with helpful links
+- Popular pages grid (CCTV, Home Cinema, Smart Home, etc.)
+- `noindex` meta tag (excluded from search)
 
 ## Common Tasks
 
