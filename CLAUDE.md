@@ -116,6 +116,7 @@ Each page includes:
 
 ### Technical SEO (Core Web Vitals)
 - **Image optimization:** All images have `width`, `height`, `loading="lazy"`, and `decoding="async"` attributes to prevent CLS
+- **WebP images:** 13 images converted to WebP format (65-96% smaller, ~3MB savings total)
 - **Resource hints:** DNS prefetch for googletagmanager.com, youtube.com; preconnect for Google Fonts
 - **Compression:** Gzip enabled via .htaccess
 - **Caching:** Browser caching headers for static assets
