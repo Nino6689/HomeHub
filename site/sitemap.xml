@@ -72,6 +72,25 @@
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
+    <!-- Location Pages -->
+    <url>
+        <loc>https://hhssuk.co.uk/cctv-installation-crawley.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://hhssuk.co.uk/cctv-installation-brighton.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://hhssuk.co.uk/smart-home-installation-horsham.html</loc>
+        <lastmod>2026-02-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
     <!-- Blog -->
     <url>
         <loc>https://hhssuk.co.uk/blog/</loc>
