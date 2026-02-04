@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Google Consent Mode v2 + Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-8NKBPS4EK0');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="CCTV installation Horsham & Sussex. 4K security cameras with smartphone access, colour night vision. No subscription fees. Free survey. Call 01403 626006.">
@@ -32,6 +51,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="canonical" href="https://hhssuk.co.uk/cctv.html">
@@ -71,6 +91,46 @@
         "serviceType": "CCTV Installation"
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does CCTV installation cost in the UK?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A basic 2-camera home CCTV system typically costs £400-800 installed. A 4-camera system with 4K quality runs £800-1500. Commercial systems vary based on requirements. We provide free surveys and quotes."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need planning permission for CCTV?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most residential CCTV doesn't need planning permission if cameras only view your property. You must display signs if cameras capture areas outside your property, and you should comply with GDPR if recording neighbours or public areas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is wired or wireless CCTV better?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wired CCTV is more reliable with no signal interference, but requires cable installation. Wireless is easier to install but needs good WiFi coverage. We recommend wired for permanent installations and wireless where cabling isn't practical."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I view CCTV on my phone?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, all our systems include smartphone apps for live viewing and playback. You can watch footage, receive motion alerts, and control cameras from anywhere with an internet connection."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -86,6 +146,7 @@
                     <li><a href="/home-cinema.html" class="nav-link">Audio Visual</a></li>
                     <li><a href="/guardian.html" class="nav-link">Guardian</a></li>
                     <li><a href="/networking.html" class="nav-link">Networking</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                     <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -287,6 +348,7 @@
                 <p class="copyright">© <span id="year"></span> HomeHub Smart Solutions Ltd</p>
                 <div class="footer-legal">
                     <a href="/privacy.html">Privacy</a>
+                    <a href="/cookies.html">Cookies</a>
                     <a href="/terms.html">Terms</a>
                 </div>
             </div>
@@ -294,5 +356,6 @@
     </footer>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>

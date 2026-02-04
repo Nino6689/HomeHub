@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Google Consent Mode v2 + Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-8NKBPS4EK0');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Smart home installation Horsham & Sussex. Voice-controlled lighting, heating, security. Alexa, Google Home, Apple HomeKit experts. Free survey. Call 01403 626006.">
@@ -32,6 +51,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="canonical" href="https://hhssuk.co.uk/smart-integrations.html">
@@ -70,6 +90,46 @@
         "serviceType": "Smart Home Automation"
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Which smart home system is best - Alexa, Google, or Apple?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Alexa has the widest device compatibility. Google excels at answering questions and integrates well if you use Google services. Apple HomeKit offers best privacy and works seamlessly with iPhones. We can integrate all three and help you choose based on your existing devices."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does smart home installation cost?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Basic smart home setups (smart thermostat, a few lights, voice assistant) start around £500. Comprehensive systems with lighting throughout, heating zones, and security integration typically run £2,000-5,000. We offer free consultations to scope your needs."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do smart thermostats really save money?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, smart thermostats typically save 10-15% on heating bills by learning your schedule and heating efficiently. With average UK heating costs, this means savings of £100-200 per year, paying back the investment within 1-2 years."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will smart home devices work if my internet goes down?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Most smart devices continue basic functions locally. Light switches still work manually, thermostats maintain schedules. You lose remote control and voice commands until internet returns. We design systems to be resilient."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -85,6 +145,7 @@
                     <li><a href="/home-cinema.html" class="nav-link">Audio Visual</a></li>
                     <li><a href="/guardian.html" class="nav-link">Guardian</a></li>
                     <li><a href="/networking.html" class="nav-link">Networking</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                     <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -118,7 +179,7 @@
                     <span class="section-label">What We Automate</span>
                     <h2 class="section-title">Smart Solutions</h2>
                 </div>
-                <div class="services-grid" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -268,6 +329,7 @@
                 <p class="copyright">© <span id="year"></span> HomeHub Smart Solutions Ltd</p>
                 <div class="footer-legal">
                     <a href="/privacy.html">Privacy</a>
+                    <a href="/cookies.html">Cookies</a>
                     <a href="/terms.html">Terms</a>
                 </div>
             </div>
@@ -275,5 +337,6 @@
     </footer>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>

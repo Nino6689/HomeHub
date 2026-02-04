@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Google Consent Mode v2 + Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-8NKBPS4EK0');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Smart home tips, CCTV guides, home cinema advice and networking solutions from HomeHub Smart Solutions. Honest advice from local Sussex installers.">
@@ -43,6 +62,7 @@
                     <li><a href="/home-cinema.html" class="nav-link">Audio Visual</a></li>
                     <li><a href="/guardian.html" class="nav-link">Guardian</a></li>
                     <li><a href="/networking.html" class="nav-link">Networking</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                     <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -196,6 +216,16 @@
                         <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">When DIY website builders make sense, and when they'll cost you more in the long run.</p>
                     </a>
                 </div>
+
+                <!-- Technology Articles -->
+                <h2 style="font-size: 24px; margin-bottom: var(--space-lg); color: var(--gray-900);">Technology & AI</h2>
+                <div class="blog-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-3xl);">
+                    <a href="/blog/ai-fears-free-local-truth.html" class="blog-card" style="background: var(--white); border-radius: var(--radius-lg); padding: var(--space-lg); border: 1px solid var(--border); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;">
+                        <span style="font-size: 12px; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em;">Technology</span>
+                        <h3 style="font-size: 18px; color: var(--gray-900); margin: var(--space-sm) 0;">AI: The Fears, 'Free' Services, and What You Need to Know</h3>
+                        <p style="font-size: 14px; color: var(--gray-600); line-height: 1.6;">Cutting through the hype. Local vs cloud AI, is free really free, and what you should actually worry about.</p>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -206,6 +236,7 @@
                 <p class="copyright">&copy; <span id="year"></span> HomeHub Smart Solutions Ltd</p>
                 <div class="footer-legal">
                     <a href="/privacy.html">Privacy</a>
+                    <a href="/cookies.html">Cookies</a>
                     <a href="/terms.html">Terms</a>
                 </div>
             </div>
@@ -213,6 +244,7 @@
     </footer>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
     <style>
         .blog-card:hover {
             transform: translateY(-4px);

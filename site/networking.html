@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Google Consent Mode v2 + Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-8NKBPS4EK0');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="WiFi installation Horsham & Sussex. Mesh WiFi, Cat6 cabling, business networks. End WiFi dead spots. 300-1000 Mbps coverage. Free survey. Call 01403 626006.">
@@ -32,6 +51,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="canonical" href="https://hhssuk.co.uk/networking.html">
@@ -70,6 +90,46 @@
         "serviceType": "Network Installation"
     }
     </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Why is my WiFi so slow in some rooms?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "WiFi signals weaken through walls, especially thick brick or stone. Distance from router, interference from neighbours' networks, and too many devices also cause slowdowns. Mesh WiFi systems or ethernet cabling solve these problems."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is mesh WiFi better than a range extender?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, mesh WiFi is significantly better. Range extenders halve your speed and create separate networks. Mesh systems maintain full speed and provide seamless roaming between units. We rarely recommend extenders anymore."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need ethernet or is WiFi good enough for gaming?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For competitive online gaming, ethernet provides more consistent, lower latency connections. WiFi can work well for casual gaming if you have a strong signal. We recommend ethernet for serious gamers and anyone working from home with video calls."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How much does it cost to install ethernet points?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Single ethernet point installation typically costs £150-250 including cabling and wall plate. Multiple points in the same job reduce per-point cost. Full house wiring with 6-8 points usually runs £600-1000 depending on property size and complexity."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <a href="#main" class="skip-link">Skip to main content</a>
@@ -85,6 +145,7 @@
                     <li><a href="/home-cinema.html" class="nav-link">Audio Visual</a></li>
                     <li><a href="/guardian.html" class="nav-link">Guardian</a></li>
                     <li><a href="/networking.html" class="nav-link active">Networking</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                     <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -291,6 +352,7 @@
                 <p class="copyright">© <span id="year"></span> HomeHub Smart Solutions Ltd</p>
                 <div class="footer-legal">
                     <a href="/privacy.html">Privacy</a>
+                    <a href="/cookies.html">Cookies</a>
                     <a href="/terms.html">Terms</a>
                 </div>
             </div>
@@ -298,5 +360,6 @@
     </footer>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>

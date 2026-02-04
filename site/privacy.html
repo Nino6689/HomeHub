@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+    <!-- Google Consent Mode v2 + Analytics -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Default consent to denied (GDPR compliant)
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
+    <script>
+      gtag('js', new Date());
+      gtag('config', 'G-8NKBPS4EK0');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="description" content="Privacy Policy for HomeHub Smart Solutions. Learn how we collect, use, and protect your personal information.">
@@ -12,6 +31,12 @@
     <meta property="og:url" content="https://hhssuk.co.uk/privacy.html">
     <meta property="og:locale" content="en_GB">
     <meta property="og:site_name" content="HomeHub Smart Solutions">
+    <meta property="og:image" content="https://hhssuk.co.uk/images/og-image.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Privacy Policy | HomeHub Smart Solutions">
+    <meta name="twitter:description" content="Privacy Policy for HomeHub Smart Solutions. Learn how we collect, use, and protect your personal information.">
+    <meta name="twitter:image" content="https://hhssuk.co.uk/images/og-image.jpg">
 
     <meta name="theme-color" content="#7C3AED">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,6 +70,7 @@
                     <li><a href="/home-cinema.html" class="nav-link">Audio Visual</a></li>
                     <li><a href="/guardian.html" class="nav-link">Guardian</a></li>
                     <li><a href="/networking.html" class="nav-link">Networking</a></li>
+                    <li><a href="/blog/" class="nav-link">Blog</a></li>
                     <li><a href="/contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -138,7 +164,13 @@
                     <p>To exercise any of these rights, please contact us using the details below.</p>
 
                     <h2>7. Cookies</h2>
-                    <p>Our website may use cookies to enhance your browsing experience. You can choose to disable cookies through your browser settings, though this may affect some functionality.</p>
+                    <p>Our website uses cookies to enhance your browsing experience and analyse site traffic (with your consent). When you first visit our site, you'll be asked to accept or decline non-essential cookies.</p>
+                    <p>We use:</p>
+                    <ul>
+                        <li><strong>Essential cookies:</strong> Required for the website to function (e.g., remembering your cookie preferences)</li>
+                        <li><strong>Analytics cookies:</strong> Help us understand how visitors use our site (only with your consent)</li>
+                    </ul>
+                    <p>For full details about the cookies we use and how to manage your preferences, please see our <a href="/cookies.html">Cookie Policy</a>.</p>
 
                     <h2>8. Third-Party Links</h2>
                     <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites and encourage you to read their privacy policies.</p>
@@ -166,15 +198,17 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border-top: none; padding-top: 0;">
-                <p class="copyright">&copy; <span id="year"></span> HomeHub Smart Solutions Ltd. All rights reserved.</p>
+                <p class="copyright">&copy; <span id="year"></span> HomeHub Smart Solutions Ltd</p>
                 <div class="footer-legal">
-                    <a href="/privacy.html">Privacy Policy</a>
-                    <a href="/terms.html">Terms & Conditions</a>
+                    <a href="/privacy.html">Privacy</a>
+                    <a href="/cookies.html">Cookies</a>
+                    <a href="/terms.html">Terms</a>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>
