@@ -18,7 +18,6 @@
         initLazyImages();
         initPrefetch();
         initScrollProgress();
-        initScrollReveal();
     }
 
     /**
@@ -55,7 +54,7 @@
     }
 
     /**
-     * Mobile Menu Toggle
+     * Mobile Menu Toggle with Focus Trap
      */
     function initMobileMenu() {
         const toggle = document.getElementById('menuToggle');
@@ -63,30 +62,59 @@
 
         if (!toggle || !nav) return;
 
+        function closeMenu() {
+            nav.classList.remove('open');
+            toggle.classList.remove('active');
+            toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            toggle.focus();
+        }
+
         toggle.addEventListener('click', function() {
             const isOpen = nav.classList.toggle('open');
             toggle.classList.toggle('active');
             toggle.setAttribute('aria-expanded', isOpen);
             document.body.style.overflow = isOpen ? 'hidden' : '';
+
+            // Focus trap: focus first link when menu opens
+            if (isOpen) {
+                var firstLink = nav.querySelector('a');
+                if (firstLink) firstLink.focus();
+            }
         });
 
         // Close on link click
-        nav.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                nav.classList.remove('open');
-                toggle.classList.remove('active');
-                toggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
+        nav.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                closeMenu();
+            }
         });
 
-        // Close on escape
+        // Keyboard handling
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && nav.classList.contains('open')) {
-                nav.classList.remove('open');
-                toggle.classList.remove('active');
-                toggle.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
+            if (!nav.classList.contains('open')) return;
+
+            // Close on escape
+            if (e.key === 'Escape') {
+                closeMenu();
+                return;
+            }
+
+            // Focus trap: cycle focus within menu
+            if (e.key === 'Tab') {
+                var focusable = nav.querySelectorAll('a, button');
+                if (!focusable.length) return;
+
+                var first = focusable[0];
+                var last = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
             }
         });
     }
@@ -97,17 +125,17 @@
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
+                var href = this.getAttribute('href');
                 if (href === '#') return;
 
-                const target = document.querySelector(href);
+                var target = document.querySelector(href);
                 if (!target) return;
 
                 e.preventDefault();
 
-                const header = document.getElementById('header');
-                const offset = header ? header.offsetHeight + 20 : 20;
-                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                var header = document.getElementById('header');
+                var offset = header ? header.offsetHeight + 20 : 20;
+                var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
 
                 window.scrollTo({
                     top: top,
@@ -119,38 +147,64 @@
 
     /**
      * Scroll Animations with Intersection Observer
+     * Consolidated: handles both fade-in and visibility reveal
      */
     function initAnimations() {
-        const elements = document.querySelectorAll('.service-card, .project-card, .testimonial-card, .why-item, .stat');
+        if (!('IntersectionObserver' in window)) return;
 
-        if (!elements.length || !('IntersectionObserver' in window)) return;
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                    observer.unobserve(entry.target);
-                }
+        // Fade-in cards
+        var fadeElements = document.querySelectorAll('.service-card, .project-card, .testimonial-card, .why-item, .stat');
+        if (fadeElements.length) {
+            var fadeObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('visible');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
 
-        elements.forEach(function(el, index) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease ' + (index % 3) * 0.1 + 's, transform 0.6s ease ' + (index % 3) * 0.1 + 's';
-            observer.observe(el);
-        });
+            fadeElements.forEach(function(el, index) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease ' + (index % 3) * 0.1 + 's, transform 0.6s ease ' + (index % 3) * 0.1 + 's';
+                el.style.transitionDelay = (index % 4) * 0.1 + 's';
+                fadeObserver.observe(el);
+            });
+        }
+
+        // Reveal elements (process steps, split images)
+        var revealElements = document.querySelectorAll('.process-step, .split-image');
+        if (revealElements.length) {
+            var revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -60px 0px'
+            });
+
+            revealElements.forEach(function(el, index) {
+                el.style.transitionDelay = (index % 4) * 0.1 + 's';
+                revealObserver.observe(el);
+            });
+        }
     }
 
     /**
      * Set Current Year in Footer
      */
     function initYear() {
-        const yearEl = document.getElementById('year');
+        var yearEl = document.getElementById('year');
         if (yearEl) {
             yearEl.textContent = new Date().getFullYear();
         }
@@ -159,9 +213,10 @@
     /**
      * Form Validation (for contact page)
      */
-    window.validateForm = function(form) {
-        const email = form.querySelector('[type="email"]');
-        const message = form.querySelector('textarea');
+    window.HHSS = window.HHSS || {};
+    window.HHSS.validateForm = function(form) {
+        var email = form.querySelector('[type="email"]');
+        var message = form.querySelector('textarea');
 
         if (email && !isValidEmail(email.value)) {
             showError(email, 'Please enter a valid email address');
@@ -176,16 +231,19 @@
         return true;
     };
 
+    // Keep backward compat
+    window.validateForm = window.HHSS.validateForm;
+
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
     function showError(input, message) {
         input.classList.add('error');
-        const existing = input.parentNode.querySelector('.error-message');
+        var existing = input.parentNode.querySelector('.error-message');
         if (existing) existing.remove();
 
-        const error = document.createElement('span');
+        var error = document.createElement('span');
         error.className = 'error-message';
         error.textContent = message;
         error.style.cssText = 'color: #ef4444; font-size: 14px; margin-top: 4px; display: block;';
@@ -193,7 +251,7 @@
 
         input.addEventListener('input', function() {
             input.classList.remove('error');
-            const err = input.parentNode.querySelector('.error-message');
+            var err = input.parentNode.querySelector('.error-message');
             if (err) err.remove();
         }, { once: true });
     }
@@ -202,7 +260,7 @@
      * Lazy Image Loading with fade-in effect
      */
     function initLazyImages() {
-        const images = document.querySelectorAll('img[loading="lazy"]');
+        var images = document.querySelectorAll('img[loading="lazy"]');
 
         images.forEach(function(img) {
             if (img.complete) {
@@ -219,17 +277,15 @@
      * Prefetch linked pages on hover for faster navigation
      */
     function initPrefetch() {
-        if (!('IntersectionObserver' in window)) return;
-
-        const links = document.querySelectorAll('a[href^="/"], a[href^="./"]');
-        const prefetched = new Set();
+        var links = document.querySelectorAll('a[href^="/"], a[href^="./"]');
+        var prefetched = new Set();
 
         links.forEach(function(link) {
             link.addEventListener('mouseenter', function() {
-                const href = link.getAttribute('href');
+                var href = link.getAttribute('href');
                 if (!href || prefetched.has(href)) return;
 
-                const prefetchLink = document.createElement('link');
+                var prefetchLink = document.createElement('link');
                 prefetchLink.rel = 'prefetch';
                 prefetchLink.href = href;
                 document.head.appendChild(prefetchLink);
@@ -242,17 +298,16 @@
      * Scroll Progress Indicator
      */
     function initScrollProgress() {
-        // Create progress bar
-        const progress = document.createElement('div');
+        var progress = document.createElement('div');
         progress.className = 'scroll-progress';
         document.body.prepend(progress);
 
-        let ticking = false;
+        var ticking = false;
 
         function updateProgress() {
-            const scrollTop = window.pageYOffset;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollTop / docHeight;
+            var scrollTop = window.pageYOffset;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var scrollPercent = scrollTop / docHeight;
             progress.style.transform = 'scaleX(' + scrollPercent + ')';
             ticking = false;
         }
@@ -263,33 +318,6 @@
                 ticking = true;
             }
         }, { passive: true });
-    }
-
-    /**
-     * Scroll Reveal Animation
-     */
-    function initScrollReveal() {
-        const elements = document.querySelectorAll('.service-card, .testimonial-card, .process-step, .split-image');
-
-        if (!elements.length || !('IntersectionObserver' in window)) return;
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -60px 0px'
-        });
-
-        elements.forEach(function(el, index) {
-            // Stagger the delay based on position
-            el.style.transitionDelay = (index % 4) * 0.1 + 's';
-            observer.observe(el);
-        });
     }
 
 })();

@@ -122,7 +122,7 @@ Each page includes:
 - **Caching:** Browser caching headers for static assets
 
 ### Sitemap
-- 55+ URLs total
+- 51 URLs total
 - Submitted to Google Search Console and Bing Webmaster Tools
 - Auto-discovered via robots.txt
 

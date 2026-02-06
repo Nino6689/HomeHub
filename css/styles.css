@@ -2358,13 +2358,9 @@ img[loading="lazy"]:not([src=""]) {
 /* ==========================================================================
    Performance Optimizations
    ========================================================================== */
-/* GPU acceleration for animations */
-.service-card,
-.testimonial-card,
-.btn,
+/* GPU acceleration for actively animated elements only */
 .hero-card,
-.float-badge,
-.nav-link::after {
+.float-badge {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
