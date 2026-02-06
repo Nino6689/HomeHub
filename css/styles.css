@@ -61,6 +61,7 @@
     --container: 1280px;
     --container-narrow: 800px;
     --radius: 12px;
+    --radius-md: 16px;
     --radius-lg: 20px;
     --radius-xl: 28px;
     --radius-full: 100px;
@@ -1508,61 +1509,6 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--gray-900);
 }
 
-/* ==========================================================================
-   Web & Branding Page Specific
-   ========================================================================== */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
-}
-
-.portfolio-card {
-    position: relative;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    aspect-ratio: 16/10;
-    background: var(--gray-100);
-}
-
-.portfolio-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform var(--duration) var(--ease);
-}
-
-.portfolio-card:hover img {
-    transform: scale(1.05);
-}
-
-.portfolio-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: var(--space-2xl);
-    opacity: 0;
-    transition: opacity var(--duration) var(--ease);
-}
-
-.portfolio-card:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-overlay h3 {
-    font-size: 24px;
-    color: var(--white);
-    margin-bottom: var(--space-sm);
-}
-
-.portfolio-overlay p {
-    color: var(--gray-300);
-    font-size: 15px;
-}
-
 /* Case Study Cards */
 .case-study-grid {
     display: flex;
@@ -1784,123 +1730,6 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Pricing Cards */
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
-}
-
-.pricing-card {
-    background: var(--white);
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-lg);
-    padding: var(--space-2xl);
-    text-align: center;
-    transition: all var(--duration) var(--ease);
-}
-
-.pricing-card.pricing-dark {
-    background: var(--gray-900);
-    border-color: var(--gray-800);
-}
-
-.pricing-card.pricing-dark .pricing-label {
-    color: var(--accent-light);
-}
-
-.pricing-card.pricing-dark .pricing-name,
-.pricing-card.pricing-dark .pricing-price {
-    color: var(--white);
-}
-
-.pricing-card.pricing-dark .pricing-price span {
-    color: var(--gray-400);
-}
-
-.pricing-card.pricing-dark .pricing-features li {
-    border-color: var(--gray-800);
-    color: var(--gray-300);
-}
-
-.pricing-card.pricing-dark .btn-outline {
-    border-color: var(--gray-600);
-    color: var(--white);
-}
-
-.pricing-card.pricing-dark .btn-outline:hover {
-    background: var(--white);
-    border-color: var(--white);
-    color: var(--gray-900);
-}
-
-.pricing-card.featured {
-    border-color: var(--primary);
-    transform: scale(1.02);
-    box-shadow: var(--shadow-glow);
-}
-
-.pricing-card.featured.pricing-dark {
-    position: relative;
-}
-
-.pricing-card.featured.pricing-dark::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: var(--gradient-brand);
-    border-radius: calc(var(--radius-lg) + 2px);
-    z-index: -1;
-}
-
-.pricing-card:hover {
-    border-color: var(--primary);
-}
-
-.pricing-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--primary);
-    margin-bottom: var(--space-md);
-}
-
-.pricing-name {
-    font-size: 28px;
-    margin-bottom: var(--space-md);
-}
-
-.pricing-price {
-    font-family: var(--font-display);
-    font-size: 48px;
-    color: var(--gray-900);
-    margin-bottom: var(--space-lg);
-}
-
-.pricing-price span {
-    font-size: 18px;
-    color: var(--gray-800);
-}
-
-.pricing-features {
-    text-align: left;
-    margin-bottom: var(--space-xl);
-}
-
-.pricing-features li {
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--gray-100);
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-}
-
-.pricing-features svg {
-    color: var(--emerald);
-    flex-shrink: 0;
-}
-
 
 /* ==========================================================================
    Responsive
@@ -1943,15 +1772,6 @@ h1, h2, h3, h4, h5, h6 {
         grid-column: span 2;
     }
 
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .pricing-card.featured {
-        transform: none;
-    }
 }
 
 @media (max-width: 991px) {
@@ -2006,9 +1826,6 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
     }
 
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 @media (max-width: 767px) {
