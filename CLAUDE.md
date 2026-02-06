@@ -72,7 +72,7 @@ HomeHub/
 - **Frontend:** Static HTML, CSS, vanilla JavaScript
 - **Hosting:** Hostinger (LiteSpeed server)
 - **CDN:** Cloudflare
-- **Analytics:** Google Analytics 4 (G-WWMJG4HRWM) + Microsoft Clarity (pcc68v3lvx)
+- **Analytics:** Google Analytics 4 (G-8NKBPS4EK0) + Microsoft Clarity (pcc68v3lvx)
 - **Fonts:** Space Grotesk, Inter (Google Fonts)
 
 ## SEO Implementation
@@ -171,7 +171,7 @@ Custom error page with:
 5. Commit and push
 
 ### Update Analytics
-- **Google Analytics 4:** G-WWMJG4HRWM
+- **Google Analytics 4:** G-8NKBPS4EK0
 - **Microsoft Clarity:** pcc68v3lvx
 - Consent mode code is in `<head>` of every HTML file
 - Consent update logic is in `js/cookies.js`
