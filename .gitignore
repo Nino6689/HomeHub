@@ -1,3 +1,6 @@
+# WordPress archive (local only)
+wp-archive/
+
 # Old WordPress folder (not needed for static site)
 public_html/
 
