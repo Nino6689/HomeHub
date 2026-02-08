@@ -8,6 +8,10 @@
 
     const COOKIE_NAME = 'hhss_cookie_consent';
     const COOKIE_EXPIRY = 365; // days
+    const analyticsConfig = (window.HHSS && window.HHSS.analytics) || {};
+    const GA_ID = analyticsConfig.gaId || 'G-8NKBPS4EK0';
+    const CLARITY_ID = analyticsConfig.clarityId || 'pcc68v3lvx';
+    let analyticsInitialized = false;
 
     // Check if consent already given
     function hasConsent() {
@@ -29,15 +33,42 @@
     function setConsent(preferences) {
         const date = new Date();
         date.setTime(date.getTime() + (COOKIE_EXPIRY * 24 * 60 * 60 * 1000));
+        const secureFlag = window.location.protocol === 'https:' ? ';Secure' : '';
         document.cookie = COOKIE_NAME + '=' + encodeURIComponent(JSON.stringify(preferences)) +
             ';expires=' + date.toUTCString() +
-            ';path=/;SameSite=Lax';
+            ';path=/;SameSite=Lax' + secureFlag;
     }
 
     function acceptAll() {
         setConsent({ essential: true, analytics: true, marketing: true, timestamp: Date.now() });
         hideBanner();
-        // Update Google Consent Mode v2
+        enableAnalytics();
+    }
+
+    function acceptEssential() {
+        setConsent({ essential: true, analytics: false, marketing: false, timestamp: Date.now() });
+        hideBanner();
+    }
+
+    function loadScriptOnce(src, onload) {
+        if (document.querySelector('script[src="' + src + '"]')) {
+            if (onload) onload();
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = src;
+        if (onload) {
+            script.addEventListener('load', onload, { once: true });
+        }
+        document.head.appendChild(script);
+    }
+
+    function enableAnalytics() {
+        if (analyticsInitialized) return;
+        analyticsInitialized = true;
+
         if (typeof gtag === 'function') {
             gtag('consent', 'update', {
                 'ad_storage': 'granted',
@@ -46,11 +77,19 @@
                 'analytics_storage': 'granted'
             });
         }
-    }
 
-    function acceptEssential() {
-        setConsent({ essential: true, analytics: false, marketing: false, timestamp: Date.now() });
-        hideBanner();
+        if (GA_ID) {
+            loadScriptOnce('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID), function() {
+                if (typeof gtag === 'function') {
+                    gtag('js', new Date());
+                    gtag('config', GA_ID);
+                }
+            });
+        }
+
+        if (CLARITY_ID) {
+            loadScriptOnce('https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID));
+        }
     }
 
     function hideBanner() {
@@ -63,15 +102,9 @@
 
     function showBanner() {
         if (hasConsent()) {
-            // Check if analytics was accepted and update consent mode
             const consent = getConsent();
-            if (consent && consent.analytics && typeof gtag === 'function') {
-                gtag('consent', 'update', {
-                    'ad_storage': 'granted',
-                    'ad_user_data': 'granted',
-                    'ad_personalization': 'granted',
-                    'analytics_storage': 'granted'
-                });
+            if (consent && consent.analytics) {
+                enableAnalytics();
             }
             return;
         }

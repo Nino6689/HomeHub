@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <!-- Google Consent Mode v2 + Analytics -->
+    <!-- Privacy-compliant analytics bootstrap -->
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
       // Default consent to denied (GDPR compliant)
       gtag('consent', 'default', {
@@ -14,19 +16,12 @@
         'analytics_storage': 'denied',
         'wait_for_update': 500
       });
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"></script>
-    <script>
-      gtag('js', new Date());
-      gtag('config', 'G-8NKBPS4EK0');
-    </script>
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "pcc68v3lvx");
+
+      window.HHSS = window.HHSS || {};
+      window.HHSS.analytics = {
+        gaId: 'G-8NKBPS4EK0',
+        clarityId: 'pcc68v3lvx'
+      };
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -87,7 +82,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                 01403 626006
             </a>
-            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="nav" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </header>
 
@@ -141,7 +136,7 @@
                     </table>
 
                     <h3>Analytics Cookies (Optional)</h3>
-                    <p>With your consent, we may use analytics cookies to understand how visitors interact with our website. This helps us improve the site. These cookies are only set if you click "Accept All" on our cookie banner.</p>
+                    <p>With your consent, we use Google Analytics and Microsoft Clarity to understand how visitors interact with our website. This helps us improve the site. These cookies are only set if you click "Accept All" on our cookie banner.</p>
 
                     <table class="cookie-table">
                         <thead>
@@ -161,6 +156,16 @@
                                 <td>_ga_*</td>
                                 <td>Google Analytics - maintains session state</td>
                                 <td>2 years</td>
+                            </tr>
+                            <tr>
+                                <td>_clck</td>
+                                <td>Microsoft Clarity - user ID and preferences</td>
+                                <td>1 year</td>
+                            </tr>
+                            <tr>
+                                <td>_clsk</td>
+                                <td>Microsoft Clarity - stores session data</td>
+                                <td>1 day</td>
                             </tr>
                         </tbody>
                     </table>

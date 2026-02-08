@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-GB">
   <head>
-    <!-- Google Consent Mode v2 + Analytics -->
+    <!-- Privacy-compliant analytics bootstrap -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -9,36 +9,19 @@
       }
 
       // Default consent to denied (GDPR compliant)
-      gtag("consent", "default", {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
-        wait_for_update: 500,
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
       });
-    </script>
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8NKBPS4EK0"
-    ></script>
-    <script>
-      gtag("js", new Date());
-      gtag("config", "G-8NKBPS4EK0");
-    </script>
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
-      (function (c, l, a, r, i, t, y) {
-        c[a] =
-          c[a] ||
-          function () {
-            (c[a].q = c[a].q || []).push(arguments);
-          };
-        t = l.createElement(r);
-        t.async = 1;
-        t.src = "https://www.clarity.ms/tag/" + i;
-        y = l.getElementsByTagName(r)[0];
-        y.parentNode.insertBefore(t, y);
-      })(window, document, "clarity", "script", "pcc68v3lvx");
+
+      window.HHSS = window.HHSS || {};
+      window.HHSS.analytics = {
+        gaId: 'G-8NKBPS4EK0',
+        clarityId: 'pcc68v3lvx'
+      };
     </script>
     <meta charset="UTF-8" />
     <meta
@@ -358,7 +341,7 @@
         <a href="tel:01403626006" class="btn btn-primary btn-sm header-cta"
           >01403 626006</a
         >
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="nav" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -792,7 +775,7 @@
           </div>
           <div class="video-container">
             <iframe
-              src="https://www.youtube.com/embed/3LpA07nD2mc"
+              src="https://www.youtube-nocookie.com/embed/3LpA07nD2mc"
               title="HomeHub Smart Solutions - Our Services"
               allow="
                 accelerometer;
@@ -804,6 +787,7 @@
               "
               allowfullscreen
               loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
             ></iframe>
           </div>
         </div>
