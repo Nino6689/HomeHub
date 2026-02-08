@@ -43,13 +43,11 @@
         setConsent({ essential: true, analytics: true, marketing: true, timestamp: Date.now() });
         hideBanner();
         enableAnalytics();
-        notifyConsentChange({ analytics: true });
     }
 
     function acceptEssential() {
         setConsent({ essential: true, analytics: false, marketing: false, timestamp: Date.now() });
         hideBanner();
-        notifyConsentChange({ analytics: false });
     }
 
     function loadScriptOnce(src, onload) {
@@ -108,9 +106,6 @@
             if (consent && consent.analytics) {
                 enableAnalytics();
             }
-            if (consent) {
-                notifyConsentChange({ analytics: !!consent.analytics });
-            }
             return;
         }
 
@@ -149,11 +144,6 @@
         setConsent: setConsent,
         hasConsent: hasConsent
     };
-
-    function notifyConsentChange(detail) {
-        var event = new CustomEvent('hhss:consent', { detail: detail });
-        window.dispatchEvent(event);
-    }
 
     // Initialize
     if (document.readyState === 'loading') {

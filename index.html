@@ -9,18 +9,18 @@
       }
 
       // Default consent to denied (GDPR compliant)
-      gtag("consent", "default", {
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        analytics_storage: "denied",
-        wait_for_update: 500,
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
       });
 
       window.HHSS = window.HHSS || {};
       window.HHSS.analytics = {
-        gaId: "G-8NKBPS4EK0",
-        clarityId: "pcc68v3lvx",
+        gaId: 'G-8NKBPS4EK0',
+        clarityId: 'pcc68v3lvx'
       };
     </script>
     <meta charset="UTF-8" />
@@ -341,13 +341,7 @@
         <a href="tel:01403626006" class="btn btn-primary btn-sm header-cta"
           >01403 626006</a
         >
-        <button
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Toggle menu"
-          aria-controls="nav"
-          aria-expanded="false"
-        >
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-controls="nav" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -779,25 +773,22 @@
             >
             <h2 class="section-title">See What We Do</h2>
           </div>
-          <div
-            class="video-container"
-            data-video-consent
-            data-consent-src="https://www.youtube.com/embed/3LpA07nD2mc"
-            data-click-src="https://www.youtube.com/embed/3LpA07nD2mc"
-            data-title="HomeHub Smart Solutions - Our Services"
-          >
-            <div class="video-placeholder" role="button" tabindex="0" aria-label="Load video">
-              <img
-                class="video-poster"
-                src="https://img.youtube.com/vi/3LpA07nD2mc/hqdefault.jpg"
-                alt="HomeHub Smart Solutions video preview"
-                loading="lazy"
-              />
-              <span class="video-play">Play video</span>
-              <span class="video-consent">
-                To protect your privacy, this video loads after consent or when you click play.
-              </span>
-            </div>
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/3LpA07nD2mc"
+              title="HomeHub Smart Solutions - Our Services"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
           </div>
         </div>
       </section>
