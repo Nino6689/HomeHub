@@ -276,40 +276,46 @@
 
     /**
      * Consent-aware video embeds
+     * - If user accepted cookies: load standard YouTube embed automatically
+     * - If not: show placeholder; click loads privacy-enhanced embed with autoplay
      */
     function initVideoConsent() {
         var containers = document.querySelectorAll('[data-video-consent]');
         if (!containers.length) return;
 
-        function loadVideo(container, src) {
+        function loadVideo(container, src, autoplay) {
             if (!src || container.dataset.loaded === 'true') return;
 
+            var finalSrc = autoplay ? src + (src.indexOf('?') === -1 ? '?' : '&') + 'autoplay=1' : src;
+
             var iframe = document.createElement('iframe');
-            iframe.src = src;
+            iframe.src = finalSrc;
             iframe.title = container.getAttribute('data-title') || 'Video';
             iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
             iframe.allowFullscreen = true;
-            iframe.loading = 'lazy';
 
             container.innerHTML = '';
             container.appendChild(iframe);
             container.dataset.loaded = 'true';
         }
 
-        function handleConsentUpdate(consent) {
+        function tryConsentLoad() {
+            if (!window.CookieConsent || typeof window.CookieConsent.getConsent !== 'function') return;
+            var consent = window.CookieConsent.getConsent();
             if (!consent || !consent.analytics) return;
             containers.forEach(function(container) {
-                loadVideo(container, container.getAttribute('data-consent-src'));
+                loadVideo(container, container.getAttribute('data-consent-src'), false);
             });
         }
 
+        // Set up click-to-load on each placeholder
         containers.forEach(function(container) {
             var placeholder = container.querySelector('.video-placeholder');
-            var clickSrc = container.getAttribute('data-click-src');
+            var clickSrc = container.getAttribute('data-click-src') || container.getAttribute('data-consent-src');
             if (!placeholder || !clickSrc) return;
 
             function onActivate() {
-                loadVideo(container, clickSrc);
+                loadVideo(container, clickSrc, true);
             }
 
             placeholder.addEventListener('click', onActivate);
@@ -321,13 +327,20 @@
             });
         });
 
-        if (window.CookieConsent && typeof window.CookieConsent.getConsent === 'function') {
-            handleConsentUpdate(window.CookieConsent.getConsent());
-        }
-
+        // Listen for consent changes (fires when user clicks Accept)
         window.addEventListener('hhss:consent', function(e) {
-            handleConsentUpdate(e.detail);
+            if (e.detail && e.detail.analytics) {
+                containers.forEach(function(container) {
+                    loadVideo(container, container.getAttribute('data-consent-src'), false);
+                });
+            }
         });
+
+        // Check consent now (cookies.js may have already run)
+        tryConsentLoad();
+
+        // Retry shortly in case cookies.js hasn't initialised yet
+        setTimeout(tryConsentLoad, 200);
     }
 
     /**
