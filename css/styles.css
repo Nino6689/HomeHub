@@ -1343,6 +1343,59 @@ h1, h2, h3, h4, h5, h6 {
     border: 0;
 }
 
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    text-align: center;
+    padding: var(--space-xl);
+    background: var(--gray-900);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.video-placeholder:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 4px;
+}
+
+.video-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+}
+
+.video-play {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: var(--radius-full);
+    background: var(--gradient-brand);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    box-shadow: var(--shadow-glow);
+}
+
+.video-consent {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    font-size: 14px;
+    color: var(--gray-200);
+}
+
 /* ==========================================================================
    Forms
    ========================================================================== */

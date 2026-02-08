@@ -16,6 +16,7 @@
         initAnimations();
         initYear();
         initLazyImages();
+        initVideoConsent();
         initPrefetch();
         initScrollProgress();
     }
@@ -270,6 +271,62 @@
                     img.classList.add('loaded');
                 }, { once: true });
             }
+        });
+    }
+
+    /**
+     * Consent-aware video embeds
+     */
+    function initVideoConsent() {
+        var containers = document.querySelectorAll('[data-video-consent]');
+        if (!containers.length) return;
+
+        function loadVideo(container, src) {
+            if (!src || container.dataset.loaded === 'true') return;
+
+            var iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.title = container.getAttribute('data-title') || 'Video';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            iframe.loading = 'lazy';
+
+            container.innerHTML = '';
+            container.appendChild(iframe);
+            container.dataset.loaded = 'true';
+        }
+
+        function handleConsentUpdate(consent) {
+            if (!consent || !consent.analytics) return;
+            containers.forEach(function(container) {
+                loadVideo(container, container.getAttribute('data-consent-src'));
+            });
+        }
+
+        containers.forEach(function(container) {
+            var placeholder = container.querySelector('.video-placeholder');
+            var clickSrc = container.getAttribute('data-click-src');
+            if (!placeholder || !clickSrc) return;
+
+            function onActivate() {
+                loadVideo(container, clickSrc);
+            }
+
+            placeholder.addEventListener('click', onActivate);
+            placeholder.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onActivate();
+                }
+            });
+        });
+
+        if (window.CookieConsent && typeof window.CookieConsent.getConsent === 'function') {
+            handleConsentUpdate(window.CookieConsent.getConsent());
+        }
+
+        window.addEventListener('hhss:consent', function(e) {
+            handleConsentUpdate(e.detail);
         });
     }
 
