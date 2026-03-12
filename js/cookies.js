@@ -83,6 +83,7 @@
                 if (typeof gtag === 'function') {
                     gtag('js', new Date());
                     gtag('config', GA_ID);
+                    gtag('config', 'AW-16921681260');
                 }
             });
         }
@@ -90,6 +91,16 @@
         if (CLARITY_ID) {
             loadScriptOnce('https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID));
         }
+
+        // Track phone call clicks as Google Ads conversions
+        document.body.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href^="tel:"]');
+            if (link && typeof gtag === 'function') {
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-16921681260/BzLjCIrOrakaEOy68YQ_'
+                });
+            }
+        });
     }
 
     function hideBanner() {
