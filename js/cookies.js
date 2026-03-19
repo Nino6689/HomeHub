@@ -118,6 +118,8 @@
 
         const banner = document.createElement('div');
         banner.id = 'cookieBanner';
+        banner.setAttribute('role', 'alertdialog');
+        banner.setAttribute('aria-label', 'Cookie consent');
         banner.innerHTML = `
             <div class="cookie-content">
                 <div class="cookie-text">

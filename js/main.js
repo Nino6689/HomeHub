@@ -78,7 +78,7 @@
 
             // Focus trap: focus first link when menu opens
             if (isOpen) {
-                var firstLink = nav.querySelector('a');
+                const firstLink = nav.querySelector('a');
                 if (firstLink) firstLink.focus();
             }
         });
@@ -102,11 +102,11 @@
 
             // Focus trap: cycle focus within menu
             if (e.key === 'Tab') {
-                var focusable = nav.querySelectorAll('a, button');
+                const focusable = nav.querySelectorAll('a, button');
                 if (!focusable.length) return;
 
-                var first = focusable[0];
-                var last = focusable[focusable.length - 1];
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
 
                 if (e.shiftKey && document.activeElement === first) {
                     e.preventDefault();
@@ -125,17 +125,17 @@
     function initSmoothScroll() {
         document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
             anchor.addEventListener('click', function(e) {
-                var href = this.getAttribute('href');
+                const href = this.getAttribute('href');
                 if (href === '#') return;
 
-                var target = document.querySelector(href);
+                const target = document.querySelector(href);
                 if (!target) return;
 
                 e.preventDefault();
 
-                var header = document.getElementById('header');
-                var offset = header ? header.offsetHeight + 20 : 20;
-                var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                const header = document.getElementById('header');
+                const offset = header ? header.offsetHeight + 20 : 20;
+                const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
 
                 window.scrollTo({
                     top: top,
@@ -153,9 +153,9 @@
         if (!('IntersectionObserver' in window)) return;
 
         // Fade-in cards
-        var fadeElements = document.querySelectorAll('.service-card, .project-card, .testimonial-card, .why-item, .stat');
+        const fadeElements = document.querySelectorAll('.service-card, .project-card, .testimonial-card, .why-item, .stat');
         if (fadeElements.length) {
-            var fadeObserver = new IntersectionObserver(function(entries) {
+            const fadeObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         entry.target.style.opacity = '1';
@@ -179,9 +179,9 @@
         }
 
         // Reveal elements (process steps, split images)
-        var revealElements = document.querySelectorAll('.process-step, .split-image');
+        const revealElements = document.querySelectorAll('.process-step, .split-image');
         if (revealElements.length) {
-            var revealObserver = new IntersectionObserver(function(entries) {
+            const revealObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
@@ -204,7 +204,7 @@
      * Set Current Year in Footer
      */
     function initYear() {
-        var yearEl = document.getElementById('year');
+        const yearEl = document.getElementById('year');
         if (yearEl) {
             yearEl.textContent = new Date().getFullYear();
         }
@@ -215,8 +215,8 @@
      */
     window.HHSS = window.HHSS || {};
     window.HHSS.validateForm = function(form) {
-        var email = form.querySelector('[type="email"]');
-        var message = form.querySelector('textarea');
+        const email = form.querySelector('[type="email"]');
+        const message = form.querySelector('textarea');
 
         if (email && !isValidEmail(email.value)) {
             showError(email, 'Please enter a valid email address');
@@ -240,18 +240,17 @@
 
     function showError(input, message) {
         input.classList.add('error');
-        var existing = input.parentNode.querySelector('.error-message');
+        const existing = input.parentNode.querySelector('.error-message');
         if (existing) existing.remove();
 
-        var error = document.createElement('span');
+        const error = document.createElement('span');
         error.className = 'error-message';
         error.textContent = message;
-        error.style.cssText = 'color: #ef4444; font-size: 14px; margin-top: 4px; display: block;';
         input.parentNode.appendChild(error);
 
         input.addEventListener('input', function() {
             input.classList.remove('error');
-            var err = input.parentNode.querySelector('.error-message');
+            const err = input.parentNode.querySelector('.error-message');
             if (err) err.remove();
         }, { once: true });
     }
@@ -260,7 +259,7 @@
      * Lazy Image Loading with fade-in effect
      */
     function initLazyImages() {
-        var images = document.querySelectorAll('img[loading="lazy"]');
+        const images = document.querySelectorAll('img[loading="lazy"]');
 
         images.forEach(function(img) {
             if (img.complete) {
@@ -277,15 +276,15 @@
      * Prefetch linked pages on hover for faster navigation
      */
     function initPrefetch() {
-        var links = document.querySelectorAll('a[href^="/"], a[href^="./"]');
-        var prefetched = new Set();
+        const links = document.querySelectorAll('a[href^="/"], a[href^="./"]');
+        const prefetched = new Set();
 
         links.forEach(function(link) {
             link.addEventListener('mouseenter', function() {
-                var href = link.getAttribute('href');
+                const href = link.getAttribute('href');
                 if (!href || prefetched.has(href)) return;
 
-                var prefetchLink = document.createElement('link');
+                const prefetchLink = document.createElement('link');
                 prefetchLink.rel = 'prefetch';
                 prefetchLink.href = href;
                 document.head.appendChild(prefetchLink);
@@ -298,16 +297,16 @@
      * Scroll Progress Indicator
      */
     function initScrollProgress() {
-        var progress = document.createElement('div');
+        const progress = document.createElement('div');
         progress.className = 'scroll-progress';
         document.body.prepend(progress);
 
-        var ticking = false;
+        let ticking = false;
 
         function updateProgress() {
-            var scrollTop = window.pageYOffset;
-            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            var scrollPercent = scrollTop / docHeight;
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / docHeight;
             progress.style.transform = 'scaleX(' + scrollPercent + ')';
             ticking = false;
         }
