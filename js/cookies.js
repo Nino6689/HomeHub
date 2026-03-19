@@ -88,10 +88,6 @@
             });
         }
 
-        if (CLARITY_ID) {
-            loadScriptOnce('https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID));
-        }
-
         // Track phone call clicks as Google Ads conversions
         document.body.addEventListener('click', function(e) {
             var link = e.target.closest('a[href^="tel:"]');
@@ -156,7 +152,18 @@
         hasConsent: hasConsent
     };
 
+    // Load Clarity unconditionally in cookieless mode (no consent needed)
+    function initClarity() {
+        if (!CLARITY_ID) return;
+        loadScriptOnce('https://www.clarity.ms/tag/' + encodeURIComponent(CLARITY_ID), function() {
+            if (typeof window.clarity === 'function') {
+                window.clarity('set', 'cookies', 'disable');
+            }
+        });
+    }
+
     // Initialize
+    initClarity();
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', showBanner);
     } else {
